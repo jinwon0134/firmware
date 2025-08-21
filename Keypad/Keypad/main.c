@@ -1,3 +1,5 @@
+//#함수로 출력
+
 #define F_CPU 14745600UL
 #include <avr/io.h>
 #include <util/delay.h>
@@ -70,6 +72,8 @@ void scanKeypad(void)
 	_delay_ms(150); // 디바운스 + 중복 입력 방지
 }
 
+
+
 //------------------------------
 // 메인 함수
 //------------------------------
@@ -86,3 +90,98 @@ int main(void)
 		scanKeypad();  // 키패드 스캔 + LCD 출력 반복
 	}
 }
+
+// ------------------//
+// if 문으로 출력
+// ------------------//
+// #define F_CPU 14745600UL
+// #include <avr/io.h>
+// #include <util/delay.h>
+// #include "Lcd/lcd.h"
+// 
+// // 키패드 행, 열 정의
+// #define ROWS 4
+// #define COLS 3
+// 
+// void keypad_Init(){
+//     DDRD = 0xF0;   // PD4~PD7 = 출력(Row), PD0~PD2 = 입력(Col)
+// }
+// 
+// // 메인 함수
+// int main(void)
+// {
+//     // LCD 포트 초기화 및 LCD 초기화
+//     Port_Init();
+//     LCD_Init();
+//     
+//     // 키패드 초기화
+//     keypad_Init();
+// 
+//     // LCD 첫 줄 위치로 커서 이동
+//     LCD_pos(0,0);
+// 
+//     while(1)
+//     {
+//         // ---------------- Row 0 ----------------
+//         PORTD = 0x10;  // R0만 LOW
+//         _delay_us(50);
+//         if(PIND & 0x01) LCD_CHAR('1');  // C0
+//         if(PIND & 0x02) LCD_CHAR('2');  // C1
+//         if(PIND & 0x04) LCD_CHAR('3');  // C2
+// 
+//         // ---------------- Row 1 ----------------
+//         PORTD = 0x20;  // R1만 LOW
+//         _delay_us(50);
+//         if(PIND & 0x01) LCD_CHAR('4');  // C0
+//         if(PIND & 0x02) LCD_CHAR('5');  // C1
+//         if(PIND & 0x04) LCD_CHAR('6');  // C2
+// 
+//         // ---------------- Row 2 ----------------
+//         PORTD = 0x40;  // R2만 LOW
+//         _delay_us(50);
+//         if(PIND & 0x01) LCD_CHAR('7');  // C0
+//         if(PIND & 0x02) LCD_CHAR('8');  // C1
+//         if(PIND & 0x04) LCD_CHAR('9');  // C2
+// 
+//         // ---------------- Row 3 ----------------
+//         PORTD = 0x80;  // R3만 LOW
+//         _delay_us(50);
+//         if(PIND & 0x01) LCD_CHAR('*');  // C0
+//         if(PIND & 0x02) LCD_CHAR('0');  // C1
+//         if(PIND & 0x04) LCD_CHAR('#');  // C2
+// 
+//         _delay_ms(150);  // 디바운스 + 중복 입력 방지
+//     }
+// }
+
+
+// 교수님은 리턴문의 함수로 사용
+/*char keypad_getkey(){
+PORTD = 0x10;  // R0만 LOW
+_delay_us(50);
+if(PIND & 0x01) return '1';  // C0
+if(PIND & 0x02) return '2';  // C1
+if(PIND & 0x04) return '3';  // C2
+
+// ---------------- Row 1 ----------------
+PORTD = 0x20;  // R1만 LOW
+_delay_us(50);
+if(PIND & 0x01) return '4';  // C0
+if(PIND & 0x02) return '5';  // C1
+if(PIND & 0x04) return '6';  // C2
+
+// ---------------- Row 2 ----------------
+PORTD = 0x40;  // R2만 LOW
+_delay_us(50);
+if(PIND & 0x01) return '7';  // C0
+if(PIND & 0x02) return '8';  // C1
+if(PIND & 0x04) return '9';  // C2
+
+// ---------------- Row 3 ----------------
+PORTD = 0x80;  // R3만 LOW
+_delay_us(50);
+if(PIND & 0x01) return '*';  // C0
+if(PIND & 0x02) return '0';  // C1
+if(PIND & 0x04) return '#';  // C2
+}*/
+
