@@ -716,13 +716,13 @@ END GROUP
  .debug_frame   0x00000000       0xa0 Lcd/lcd.o
  .debug_frame   0x000000a0       0xd4 main.o
 
-.debug_str      0x00000000      0x4ec
+.debug_str      0x00000000      0x4f4
  *(.debug_str)
  .debug_str     0x00000000      0x27d D:/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128a/avr51/crtatmega128a.o
- .debug_str     0x0000027d      0x1be Lcd/lcd.o
-                                0x1f7 (size before relaxing)
- .debug_str     0x0000043b       0xb1 main.o
-                                0x226 (size before relaxing)
+ .debug_str     0x0000027d      0x1c6 Lcd/lcd.o
+                                0x1ff (size before relaxing)
+ .debug_str     0x00000443       0xb1 main.o
+                                0x22e (size before relaxing)
 
 .debug_loc      0x00000000      0x6a6
  *(.debug_loc)
@@ -754,5 +754,5 @@ END GROUP
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(ACD_pt.elf elf32-avr)
+OUTPUT(MOUproject.elf elf32-avr)
 LOAD linker stubs
